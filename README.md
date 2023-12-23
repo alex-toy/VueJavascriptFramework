@@ -15,4 +15,4 @@ In this project, we will study :
 - How to Deploy the App
 
 
-<img src="/pictures/access_keys.png" title="access keys"  width="900">
+<img src="/pictures/events.png" title="events"  width="900">
