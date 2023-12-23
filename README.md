@@ -15,12 +15,4 @@ In this project, we will study :
 - How to Deploy the App
 
 
-
-## Implement and Monitor an Azure Infrastructure
-
-### Storage accounts
-
-#### Connection
-
-- connection by access keys
 <img src="/pictures/access_keys.png" title="access keys"  width="900">
