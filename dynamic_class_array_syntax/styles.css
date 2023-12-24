@@ -36,6 +36,9 @@ header {
 }
 
 .active {
-  border-color: red;
   background-color: salmon;
+}
+
+.active2 {
+  border-color: red;
 }
