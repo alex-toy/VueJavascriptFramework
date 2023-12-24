@@ -2,11 +2,20 @@ const app = Vue.createApp({
   data() {
     return {
       counter: 0,
-      name: ''
+      name: '',
+      fullName:''
     };
   },
+  watch: {
+    name(newValue, oldValue) {
+      console.log(oldValue, newValue)
+    },
+    counter(value) {
+      if (value < 0) this.counter = 0;
+    }
+  },
   computed: {
-    fullName() {
+    greetings() {
       return (this.name.length > 0 ? 'hello ' + this.name + '!!!' : "");
     }
   },
