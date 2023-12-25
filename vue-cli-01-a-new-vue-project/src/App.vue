@@ -2,14 +2,7 @@
     <section>
         <h2>My friends</h2>
         <ul>
-            <friend-contact v-for="friend in friends" :key="friend.id" 
-                :id="friend.id"
-                :name="friend.name"
-                :phone="friend.phone" 
-                :email=friend.email 
-                :is-favorite="friend.isFavorite"
-                @toggle-favorite="toggleFavorite"
-            />
+            <friend-contact v-for="friend in friends" :key="friend.id" :friend="friend" @toggle-favorite="toggleFavorite" />
         </ul>
     </section>
 </template>
