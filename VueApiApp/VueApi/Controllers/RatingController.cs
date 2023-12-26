@@ -4,9 +4,9 @@ namespace VueApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class RatingController : ControllerBase
+    public class RatingController : Controller
     {
-        private static readonly UserRating[] Ratings = new[]
+        private static readonly List<UserRating> Ratings = new List<UserRating>
         {
             new UserRating(){ UserName = "alex", Rating = 3 },
             new UserRating(){ UserName = "seb", Rating = 2 },
@@ -20,10 +20,32 @@ namespace VueApi.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetRatings")]
-        public IEnumerable<UserRating> Get()
+        [HttpPost]
+        public void Post(UserRating rating)
         {
-            return Ratings.ToArray();
+            try
+            {
+                Ratings.Add(rating);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet]
+        public JsonResult Get()
+        {
+            Task.Delay(3000).Wait();
+            try
+            {
+                //throw new Exception("an error occured");
+                return Json(new { Ratings = Ratings.ToArray(), Message = "ok" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { ex.Message });
+            }
         }
     }
 }

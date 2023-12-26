@@ -5,7 +5,8 @@
       <div>
         <base-button @click="loadUserExperiences">Load Submitted Experiences</base-button>
       </div>
-      <ul>
+      <p v-if="isLoading">Loading ...</p>
+      <ul v-if="!isLoading">
         <survey-result
           v-for="result in results"
           :key="result.id"
@@ -27,11 +28,13 @@ export default {
   },
   data(){
     return {
-      results : []
+      results : [],
+      isLoading : false
     }
   },
   methods:{
     loadUserExperiences(){
+      this.isLoading = true;
       fetch('https://localhost:7089/Rating', {
         method: 'GET',
         headers: {
@@ -40,8 +43,16 @@ export default {
         }
       })
       .then(response => response.json())
-      .then(data => this.results = data);
+      .then(data => {
+        if (data.message !== 'ok') return;
+        this.results = data.ratings; 
+        this.isLoading = false; 
+      })
+      .catch(error => console.log(error));
     }
+  },
+  mounted(){
+    this.loadUserExperiences();
   }
 };
 </script>
