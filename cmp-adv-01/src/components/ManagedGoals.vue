@@ -3,10 +3,12 @@
         <h2>Managed goals</h2>
         <input type="text" ref="goal">
         <button @click="setGoal">Set Goal</button>
-        <ErrorAlert v-if="inpuIsInvalid">
-            <h2>Input should not be empty</h2>
-            <button @click="confirmError">Ok</button>
-        </ErrorAlert>
+        <teleport to="body">
+            <ErrorAlert v-if="inpuIsInvalid">
+                <h2>Input should not be empty</h2>
+                <button @click="confirmError">Ok</button>
+            </ErrorAlert>
+        </teleport>
     </div>
 </template>
 
