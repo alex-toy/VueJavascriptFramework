@@ -1,8 +1,8 @@
 <template>
   <section>
     <base-card>
-    
-      <template v-slot:header>
+
+      <template #header>
         <h2>Available Badges</h2>
       </template>
 

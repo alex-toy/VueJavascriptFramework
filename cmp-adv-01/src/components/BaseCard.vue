@@ -1,6 +1,6 @@
 <template>
     <div>
-        <header>
+        <header v-if="$slots.header">
             <slot name="header">
                 <h2>Default slot content</h2>
             </slot>
@@ -11,7 +11,9 @@
 
 <script scoped>
     export default {
-        props: [],
+        mounted() {
+            console.log(this.$slots)
+        }
     };
 </script>
 
