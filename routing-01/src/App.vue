@@ -1,8 +1,13 @@
 <template>
-  <the-navigation @set-page="setActivePage"></the-navigation>
-  <main>
-    <router-view></router-view>
-  </main>
+  <div>
+    <the-navigation @set-page="setActivePage"></the-navigation>
+    <main>
+      <router-view></router-view>
+    </main>
+    <footer>
+      <router-view name="footer"></router-view>
+    </footer>
+  </div>
 </template>
 
 <script>
