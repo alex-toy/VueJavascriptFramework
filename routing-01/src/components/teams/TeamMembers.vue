@@ -35,6 +35,9 @@ export default {
       const selectedMembers = this.users.filter(u => members.includes(u.id));
       this.members = selectedMembers;
       this.teamName = selectedTeam.name;
+
+      let sort = this.$route.query;
+      console.log(sort)
     }
   },
   created() {
