@@ -3,7 +3,7 @@
         <BaseCard>
             <header>
                 <h3>{{ learningResource.title }}</h3>
-                <BaseButton :mode="flat">Delete</BaseButton>
+                <BaseButton :mode="flat" @click="removeResource(learningResource.id)">Delete</BaseButton>
             </header>            
             <p>{{ learningResource.description }}</p>
             <nav>
@@ -14,15 +14,17 @@
 </template>
 
 <script>
-    export default {
+  export default {
+    inject: ['removeResource'],
     props: {
         learningResource: {
             title: { type: String },
             description: { type: String },
             link: { type: String },
-        }
+        },
+        id: {type: String}
     },
-}
+  }
 </script>
 
 <style scoped>
