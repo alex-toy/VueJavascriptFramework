@@ -9,7 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -20,21 +20,31 @@
       <section id="monster" class="container">
         <h2>Monster Health</h2>
         <div class="healthbar">
-          <div class="healthbar__value"></div>
+          <div class="healthbar__value" :style="monsterBarStyle"></div>
         </div>
       </section>
+
       <section id="player" class="container">
         <h2>Your Health</h2>
         <div class="healthbar">
-          <div class="healthbar__value"></div>
+          <div class="healthbar__value" :style="playerBarStyle"></div>
         </div>
       </section>
-      <section id="controls">
-        <button>ATTACK</button>
-        <button>SPECIAL ATTACK</button>
-        <button>HEAL</button>
-        <button>SURRENDER</button>
+
+      <section id="player" class="container" v-if="winner">
+        <h2 v-if="winner === 'monster'">Game Over</h2>
+        <h2 v-if="winner === 'player'">You are the winner</h2>
+        <h2 v-if="winner === 'draw'">No winner</h2>
+        <button @click="startNewGame">Start new game</button>
       </section>
+
+      <section id="controls" v-if="!winner">
+        <button @click="attackMonster">ATTACK</button>
+        <button @click="attackMonsterSpecial" :disabled="specialAttackDisabled">SPECIAL ATTACK</button>
+        <button @click="healPlayer">HEAL</button>
+        <button @click="surrender">SURRENDER</button>
+      </section>
+
       <section id="log" class="container">
         <h2>Battle Log</h2>
         <ul></ul>
